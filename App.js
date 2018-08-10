@@ -12,6 +12,54 @@ import withAuthentication from './withAuthentication';
 import './App.css';
 import styled from 'styled-components'
 
+const Button = styled.button `
+  display: inline-block;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.5em 1em;
+  border: 2px solid deeppink;
+  border-radius: 3px;
+  background: transparent;
+  color: deeppink;
+  &:hover ${Button} {
+  background: deeppink;
+  color: white;
+}`;
+
+const Home = () => (
+  <div>
+    <h2>Responsibility Tracker</h2>
+  </div>
+)
+
+const Child = () => (
+  <div>
+    <h2>Add a Child</h2>
+  </div>
+)
+
+const Responsibility = () => (
+  <div>
+    <h2>Add a Responsibility</h2>
+  </div>
+)
+
+const Tracker = () => (
+  <Router>
+    <div>
+      <ul>
+        <Link to="/"><Button>Home</Button></Link>
+        <Link to="/addChild"><Button>Add a Child</Button></Link>
+        <Link to="/addResponsibility"><Button>Add a Responsibility</Button></Link>
+      </ul>
+
+      <hr/>
+      <Route exact path="/" component={Home}/>
+      <Route path="/addChild" component={Child}/>
+      <Route path="/addResponsibility" component={Responsibility}/>
+    </div>
+  </Router>
+)
 
 const App = () =>
   <Router>
