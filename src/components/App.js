@@ -78,3 +78,4 @@ const App = () =>
   </Router>
 
 export default withAuthentication(App);
+``

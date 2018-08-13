@@ -5,7 +5,6 @@ import * as routes from '../constants/routes';
 import Button from './Button'
 import AuthUserContext from './AuthUserContext';
 
-
 const Navigation = () =>
   <AuthUserContext.Consumer>
     {authUser => authUser
