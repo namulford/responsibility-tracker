@@ -4,46 +4,75 @@ import { auth, db } from '../firebase/firebase';
 import styled from 'styled-components';
 
 
-class Add_Child extends Component {
+class AddChild extends Component {
     constructor() {
         super();
+        this.state = {
+            firstName: '',
+            lastName: ''
+        }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     state = {
-        fName: ''
+        firstName: '',
+        lastName: ''
     }
 
     handleChange = e => {
+        const target = e.target;
+        const value = target.value;
+        const name = target.name;
+
         this.setState({
-            fName: e.target.value
+            [name]: value
         });
     }
 
     handleSubmit = e => {
         e.preventDefault();
+        // alert(`Your child, ${this.state.firstName} ${this.state.lastName}, was added successfully!`)
 
         db.ref('child').push({
-            fName: this.state.fName
+            fName: this.state.fName,
+            lName: this.state.lName
         })
 
         this.setState({
-            fName: ''
-        })
+            fName: '',
+            lName: ''
+        });
     }
 
     render() {
         return (
             <div className="AddChild">
-                <input
-                    type="text"
-                    size={40}
-                    placeholder="First Name of your Child"
-                    onChange={ this.handleChange }
-                    value={ this.state.fName }
-                />
+                <label>
+                    First Name: 
+                    <input
+                        name="firstName"
+                        type="text"
+                        size={40}
+                        placeholder="First Name of your Child"
+                        onChange={ this.handleChange }
+                        value={ this.state.fName }
+                    />
+                </label>
+                <br />
+                <label>
+                    Last Name: 
+                    <input
+                        name="lastName"
+                        type="text"
+                        size={40}
+                        placeholder="Last Name of your Child"
+                        onChange={ this.handleChange }
+                        value={ this.state.lName }
+                    />
+                </label>
+                <br />
                 <button
                     type="submit"
                     onClick={ this.handleSubmit }    
@@ -55,4 +84,4 @@ class Add_Child extends Component {
     }
 }
 
-export default Add_Child;
+export default AddChild;
