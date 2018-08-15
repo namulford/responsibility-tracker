@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import * as routes from '../constants/routes';
-import { auth, db } from '../firebase';
+import { auth, db } from '../firebase/firebase';
 import styled from 'styled-components';
-import config from '../firebase'
 
 
-class AddChild extends Component {
+class Add_Child extends Component {
     constructor() {
         super();
 
@@ -26,7 +25,7 @@ class AddChild extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        this.props.firebase.ref('child').push({
+        db.ref('child').push({
             fName: this.state.fName
         })
 
@@ -56,4 +55,4 @@ class AddChild extends Component {
     }
 }
 
-export default AddChild;
+export default Add_Child;
