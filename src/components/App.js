@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import LandingPage from './Landing';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
+import AddChild from './AddChild';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
@@ -74,8 +75,8 @@ const App = () =>
       <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
       <Route exact path={routes.HOME} component={() => <HomePage />} />
       <Route exact path={routes.ACCOUNT} component={() => <AccountPage />} />
+      <Route exact path={routes.ADD_CHILD} component={() => <AddChild />} />
     </div>
   </Router>
 
 export default withAuthentication(App);
-``

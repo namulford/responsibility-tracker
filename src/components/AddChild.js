@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import * as routes from '../constants/routes';
+import { auth, db } from '../firebase';
+import styled from 'styled-components';
+import config from '../firebase'
+
 
 class AddChild extends Component {
     constructor() {
@@ -34,12 +39,11 @@ class AddChild extends Component {
         return (
             <div className="AddChild">
                 <input
-                    name="fName"
                     type="text"
                     size={40}
                     placeholder="First Name of your Child"
                     onChange={ this.handleChange }
-                    value={ this.props.fName }
+                    value={ this.state.fName }
                 />
                 <button
                     type="submit"
