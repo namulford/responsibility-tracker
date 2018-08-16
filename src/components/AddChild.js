@@ -33,11 +33,11 @@ class AddChild extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        // alert(`Your child, ${this.state.firstName} ${this.state.lastName}, was added successfully!`)
+        alert(`Your child, ${this.state.firstName} ${this.state.lastName}, was added successfully!`)
 
         db.ref('child').push({
-            fName: this.state.fName,
-            lName: this.state.lName
+            fName: this.state.firstName,
+            lName: this.state.lastName
         })
 
         this.setState({
