@@ -3,7 +3,6 @@ import * as routes from '../constants/routes';
 import { auth, db } from '../firebase/firebase';
 import styled from 'styled-components';
 
-
 class AddChild extends Component {
     constructor() {
         super();
@@ -14,11 +13,6 @@ class AddChild extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    state = {
-        firstName: '',
-        lastName: ''
     }
 
     handleChange = e => {
@@ -35,14 +29,18 @@ class AddChild extends Component {
         e.preventDefault();
         alert(`Your child, ${this.state.firstName} ${this.state.lastName}, was added successfully!`)
 
+        var user = auth.currentUser.email;
+        console.log(user)
+
         db.ref('child').push({
-            fName: this.state.firstName,
-            lName: this.state.lastName
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            user
         })
 
         this.setState({
-            fName: '',
-            lName: ''
+            firstName: '',
+            lastName: ''
         });
     }
 
@@ -57,7 +55,7 @@ class AddChild extends Component {
                         size={40}
                         placeholder="First Name of your Child"
                         onChange={ this.handleChange }
-                        value={ this.state.fName }
+                        value={ this.state.firstName }
                     />
                 </label>
                 <br />
@@ -69,7 +67,7 @@ class AddChild extends Component {
                         size={40}
                         placeholder="Last Name of your Child"
                         onChange={ this.handleChange }
-                        value={ this.state.lName }
+                        value={ this.state.lastName }
                     />
                 </label>
                 <br />
